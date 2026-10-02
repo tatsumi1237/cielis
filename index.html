@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI動画アカウントの収益化代行｜CIELIS</title>
+<meta name="description" content="再生数は取れているのに、収益化できていないAI動画クリエイターへ。商品設計から販売・サポートまで、マネタイズをCIELISが裏側でまるごと担当します。平均再生数5,000回以上の方はDMでご相談ください。">
+<meta name="theme-color" content="#ffd23f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="再生数は、もう取れている。次は、収益に。｜CIELIS">
+<meta property="og:description" content="AI動画アカウントのマネタイズを、CIELISが裏側でまるごと担当。あなたは今まで通り発信するだけ。">
+<meta property="og:url" content="https://tatsumi1237.github.io/cielis/">
+<meta property="og:image" content="https://tatsumi1237.github.io/cielis/og.png">
+<link rel="canonical" href="https://tatsumi1237.github.io/cielis/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+/* Layout: one mobile-first column of full-bleed color bands (cream / yellow / blue / coral), each band one message, chunky ink borders + offset shadows from the deck */
+:root{
+  --cream:#fffaf2; --ink:#1b1b1f; --yellow:#ffd23f; --coral:#ff5a5f; --blue:#3a86ff; --muted:#5f5a52; --white:#ffffff;
+  --display:"Outfit","Noto Sans JP",system-ui,sans-serif;
+  --body:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+  --gutter:20px; --max:1080px; --bw:3px; --sh:6px;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;word-break:auto-phrase;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom,0px)}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--gutter)}
+section{position:relative;overflow:hidden;padding-block:72px}
+h2{font-size:clamp(28px,7.4vw,46px);font-weight:900;line-height:1.3;text-wrap:balance;letter-spacing:.01em}
+mark{background:linear-gradient(transparent 60%,var(--yellow) 60%);color:inherit}
+.on-yellow mark{background:linear-gradient(transparent 60%,var(--white) 60%)}
+.on-blue mark,.on-coral mark{background:none;color:var(--yellow)}
+.eb{display:inline-block;font:800 13px/1 var(--display);letter-spacing:.2em;color:var(--coral);margin-bottom:14px}
+.on-blue .eb,.on-coral .eb{color:var(--yellow)}
+.on-yellow{background:var(--yellow)}.on-blue{background:var(--blue);color:var(--white)}.on-coral{background:var(--coral);color:var(--white)}
+.lead{font-size:clamp(16px,4.2vw,19px);font-weight:700;margin-top:18px;max-width:36em}
+.box{background:var(--white);color:var(--ink);border:var(--bw) solid var(--ink);border-radius:22px;box-shadow:var(--sh) var(--sh) 0 var(--ink)}
+.blob{position:absolute;border-radius:50%;pointer-events:none}
+.ico{width:44px;height:44px;flex:none}
+br.d{display:none}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--coral);color:var(--white);text-decoration:none;font-weight:900;font-size:18px;line-height:1.2;border:var(--bw) solid var(--ink);border-radius:999px;padding:18px 30px;box-shadow:var(--sh) var(--sh) 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn:focus-visible,.hd-dm:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.btn svg{width:24px;height:24px}
+.btn.yellow{background:var(--yellow);color:var(--ink)}
+
+/* header */
+.hd{position:sticky;top:0;z-index:20;background:rgba(255,250,242,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:2px solid var(--ink);padding-top:env(safe-area-inset-top,0px)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;min-width:0}
+.logo b{font:900 22px var(--display);letter-spacing:.22em}
+.logo span{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
+.hd-dm{flex:none;font-size:14px;font-weight:900;text-decoration:none;background:var(--ink);color:var(--white);border-radius:999px;padding:8px 16px}
+
+/* hero */
+.hero{padding-block:44px 72px}
+.hero .b1{width:min(60vw,520px);aspect-ratio:1;background:var(--yellow);right:-26vw;top:-34vw}
+.hero .b2{width:180px;height:180px;background:var(--coral);left:-80px;bottom:-60px}
+.hero .wrap{position:relative;display:grid;gap:36px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--white);font-size:13px;font-weight:900;border-radius:999px;padding:7px 14px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.hero h1{font-size:clamp(38px,10.6vw,68px);font-weight:900;line-height:1.22;margin-top:20px;letter-spacing:.01em}
+.hero .cta{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:30px}
+.cond{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.cond b{background:var(--yellow);padding:0 6px;border-radius:4px}
+.cond svg{width:22px;height:22px;flex:none;color:var(--coral)}
+.visual{position:relative;justify-self:center;width:min(100%,400px)}
+.phone{position:relative;width:62%;aspect-ratio:9/17;background:var(--white);border:4px solid var(--ink);border-radius:34px;box-shadow:8px 8px 0 var(--ink);padding:18px 12px;display:flex;flex-direction:column;gap:12px}
+.screen{flex:1;background:var(--coral);border-radius:18px;display:grid;place-items:center;position:relative;overflow:hidden}
+.screen:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 55%)}
+.screen svg{width:34%;color:var(--white)}
+.ai{position:absolute;left:10px;top:10px;font:900 12px var(--display);letter-spacing:.12em;background:var(--ink);color:var(--yellow);border-radius:6px;padding:3px 8px}
+.views{display:flex;align-items:center;gap:8px;font-weight:900;font-size:13px}
+.views svg{width:18px;height:18px;color:var(--coral)}
+.views em{font:900 20px var(--display);font-style:normal}
+.lines i{display:block;height:7px;border-radius:4px;background:#e6e0d5;margin-top:7px}
+.lines i:last-child{width:60%}
+.coin{position:absolute;right:2%;top:16%;width:30%;aspect-ratio:1;border-radius:50%;background:var(--yellow);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);display:grid;place-items:center;font:900 clamp(28px,9vw,46px) var(--display);animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.dash{position:absolute;left:58%;top:30%;width:26%;color:var(--ink)}
+.up{position:absolute;right:4%;bottom:12%;width:30%;color:var(--coral)}
+
+/* problem */
+.checks{list-style:none;display:grid;gap:14px;margin-top:30px}
+.checks li{display:flex;align-items:center;gap:14px;font-weight:900;font-size:clamp(16px,4.3vw,19px);line-height:1.45;padding:16px 18px}
+.checks svg{width:30px;height:30px;flex:none;color:var(--coral)}
+.after{margin-top:28px;font-weight:900;font-size:clamp(17px,4.6vw,21px)}
+
+/* insight */
+.insight .b1{width:300px;height:300px;background:var(--yellow);opacity:.35;right:-140px;bottom:-140px}
+.stat{margin-top:30px;padding:28px 24px;display:grid;gap:8px;text-align:center}
+.stat .n{font:900 clamp(64px,19vw,112px)/1 var(--display);letter-spacing:-.01em}
+.stat .n small{font-size:.42em;margin-left:4px}
+.stat .u{font-weight:900;font-size:16px}
+.stat .eq{display:inline-block;justify-self:center;margin-top:10px;background:var(--ink);color:var(--white);border-radius:999px;padding:8px 18px;font-weight:900;font-size:clamp(14px,4vw,17px)}
+.insight p.body{margin-top:26px;font-size:17px;font-weight:700;max-width:34em}
+
+/* solution */
+.split{display:grid;gap:16px;margin-top:30px;align-items:stretch}
+.side{padding:26px 22px;display:flex;align-items:center;gap:18px}
+.side.us{background:var(--yellow)}
+.side .ci{width:70px;height:70px;flex:none;border-radius:50%;border:var(--bw) solid var(--ink);background:var(--cream);display:grid;place-items:center}
+.side .ci svg{width:38px;height:38px}
+.side small{display:block;font:800 12px var(--display);letter-spacing:.18em;color:var(--coral)}
+.side.us small{color:var(--ink)}
+.side b{display:block;font-size:clamp(20px,5.6vw,26px);line-height:1.35;margin-top:2px}
+.side p{font-size:14px;font-weight:700;margin-top:4px}
+.plus{justify-self:center;font:900 40px/1 var(--display);color:var(--coral)}
+
+/* flow */
+.flow{display:grid;gap:10px;margin-top:34px;justify-items:stretch}
+.node{display:flex;align-items:center;gap:14px;padding:16px 20px;font-weight:900;font-size:18px}
+.node svg{width:36px;height:36px;flex:none}
+.node.gold{background:var(--yellow)}
+.core{background:var(--yellow);color:var(--ink);border:var(--bw) solid var(--ink);border-radius:26px;box-shadow:var(--sh) var(--sh) 0 var(--ink);padding:20px;text-align:center}
+.core .h{display:flex;align-items:center;justify-content:center;gap:10px;font:900 32px var(--display);letter-spacing:.2em}
+.core .h svg{width:32px;height:32px}
+.core ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:12px}
+.core li{background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:4px 14px;font-weight:900;font-size:14px}
+.down{justify-self:center;color:var(--yellow);width:30px;height:30px}
+.note-bar{margin-top:30px;text-align:center;font-weight:900;font-size:clamp(16px,4.4vw,20px);background:var(--ink);color:var(--yellow);border-radius:999px;padding:14px 20px}
+
+/* ai fit */
+.fit{display:grid;gap:12px;margin-top:30px}
+.fit .node{justify-content:center;text-align:center;flex-direction:column;gap:8px;padding:22px}
+.fit .node.blue{background:var(--blue);color:var(--white)}
+.fit .node svg{width:44px;height:44px}
+.fit .down{color:var(--coral)}
+.reasons{list-style:none;display:grid;gap:12px;margin-top:22px}
+.reasons li{display:flex;align-items:center;gap:14px;background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;padding:14px 18px;font-weight:900;line-height:1.45}
+.reasons svg{width:32px;height:32px;flex:none;color:var(--coral)}
+
+/* areas */
+.areas{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:30px}
+.areas li{position:relative;display:flex;flex-direction:column;gap:10px;padding:18px 14px 16px;font-weight:900;font-size:15px;line-height:1.4;border-radius:18px;box-shadow:4px 4px 0 var(--ink)}
+.areas li:nth-child(3n){background:var(--yellow)}
+.areas svg{width:34px;height:34px;color:var(--blue)}
+.areas i{position:absolute;right:12px;top:10px;font:900 13px var(--display);font-style:normal;color:var(--coral)}
+.areas-note{margin-top:22px;font-weight:900;text-align:center}
+
+/* plans */
+.plans{display:grid;gap:22px;margin-top:30px}
+.plan{padding:24px 22px;display:flex;flex-direction:column;gap:10px}
+.plan.b{background:var(--blue);color:var(--white)}
+.plan .pn{font:900 40px/1 var(--display);color:var(--coral)}
+.plan.b .pn{color:var(--yellow)}
+.plan .ps{font-weight:900;font-size:clamp(17px,4.6vw,20px)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:2px dashed currentColor;padding-top:10px;font-weight:700}
+.row em{font-style:normal;font-weight:900;font-size:14px;border:2px solid var(--ink);border-radius:999px;padding:3px 16px;background:var(--white);color:var(--ink)}
+.row em.c{background:var(--yellow)}
+.plan p{font-size:14px;font-weight:700;line-height:1.6;margin-top:4px}
+.fine{font-size:13px;color:var(--muted);margin-top:18px}
+
+/* merits */
+.merits{list-style:none;display:grid;gap:12px;margin-top:30px;counter-reset:m}
+.merits li{counter-increment:m;display:flex;align-items:center;gap:14px;padding:14px 18px;font-weight:900;font-size:clamp(16px,4.3vw,18px);line-height:1.4}
+.merits li:before{content:counter(m);flex:none;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--yellow);font:900 18px/36px var(--display);text-align:center}
+.merits li:nth-child(4){background:var(--yellow)}
+
+/* steps */
+.steps{list-style:none;position:relative;display:grid;gap:18px;margin-top:30px}
+.steps:before{content:"";position:absolute;left:31px;top:30px;bottom:30px;width:4px;background:repeating-linear-gradient(var(--ink) 0 12px,transparent 12px 20px)}
+.steps li{position:relative;display:flex;align-items:center;gap:18px}
+.steps .d{width:66px;height:66px;flex:none;border-radius:50%;background:var(--white);border:var(--bw) solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center}
+.steps li:first-child .d{background:var(--coral);color:var(--white)}
+.steps li:last-child .d{background:var(--yellow)}
+.steps .d svg{width:30px;height:30px}
+.steps small{display:block;font:900 12px var(--display);letter-spacing:.14em;color:var(--coral)}
+.steps b{font-size:20px}
+
+/* faq */
+.faq{display:grid;gap:12px;margin-top:30px}
+.faq details{background:var(--white);border:var(--bw) solid var(--ink);border-radius:18px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px 18px;font-weight:900;line-height:1.45}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:before{content:"Q";flex:none;font:900 20px var(--display);color:var(--coral)}
+.faq summary:after{content:"";flex:none;margin-left:auto;width:12px;height:12px;border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(-135deg) translateY(-3px)}
+.faq .a{padding:0 18px 18px 50px;font-weight:700;font-size:15px}
+
+/* final cta */
+.final .b1{width:360px;height:360px;background:var(--yellow);right:-150px;top:-150px}
+.final .b2{width:220px;height:220px;background:var(--coral);right:-100px;bottom:-110px}
+.final .wrap{position:relative}
+.target{margin-top:28px;padding:24px 22px}
+.target h3{font-size:clamp(18px,5vw,22px);font-weight:900;line-height:1.4}
+.target ul{list-style:none;display:grid;gap:10px;margin-top:14px}
+.target li{display:flex;align-items:center;gap:12px;font-weight:900;font-size:clamp(16px,4.3vw,18px)}
+.target li svg{width:26px;height:26px;flex:none;color:var(--coral)}
+.target li.k{background:var(--yellow);border-radius:10px;padding:6px 10px;margin-inline:-10px}
+.final .cta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:30px;text-align:center}
+.final .cta .btn{width:100%;max-width:420px;font-size:20px;padding:20px 24px}
+.handle{font-weight:700;font-size:14px}
+.handle b{font-family:var(--display);letter-spacing:.04em}
+
+/* footer */
+footer{background:var(--ink);color:var(--white);padding-block:40px calc(110px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;flex-direction:column;gap:6px}
+footer b{font:900 24px var(--display);letter-spacing:.24em}
+footer p{font-size:13px;opacity:.75}
+
+/* sticky mobile cta */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px var(--gutter) calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,rgba(255,250,242,.96) 30%);transform:translateY(110%);transition:transform .25s}
+.dock.show{transform:none}
+.dock .btn{width:100%;font-size:17px;padding:15px 20px}
+.dock small{display:block;font-size:11px;font-weight:700;opacity:.9}
+
+/* wider screens */
+@media (min-width:760px){
+  :root{--gutter:32px}
+  section{padding-block:104px}
+  .hero{padding-block:72px 104px}
+  .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center}
+  .hero .b1{right:-160px;top:-180px}
+  .checks{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .checks li:last-child{grid-column:span 2}
+  .insight .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .stat{margin-top:0}
+  .split{grid-template-columns:1fr auto 1fr;align-items:center}
+  .flow{grid-template-columns:1fr auto 1fr auto 1.6fr auto 1fr auto 1fr;align-items:center;gap:10px}
+  .flow .node{flex-direction:column;text-align:center;padding:18px 10px;font-size:16px}
+  .flow .down{transform:rotate(-90deg)}
+  .flow .node{line-height:1.4}
+  .fit{grid-template-columns:1fr auto 1.3fr;align-items:center}
+  .fit .down{transform:rotate(-90deg)}
+  .reasons{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .areas{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .plans{grid-template-columns:1fr 1fr}
+  .merits{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .merits li:last-child{grid-column:span 2}
+  .steps{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  .steps:before{left:10%;right:10%;top:31px;bottom:auto;width:auto;height:4px;background:repeating-linear-gradient(90deg,var(--ink) 0 12px,transparent 12px 20px)}
+  .steps li{flex-direction:column;text-align:center;gap:10px}
+  .faq{max-width:760px}
+  .dock{display:none}
+  br.d{display:inline}
+  footer{padding-block:48px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="CIELIS トップへ"><b>CIELIS</b><span>SNS収益化代行</span></a>
+    <a class="hd-dm js-dm" href="https://ig.me/m/inbesters" target="_blank" rel="noopener">DMで相談</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <i class="blob b1"></i><i class="blob b2"></i>
+  <div class="wrap">
+    <div>
+      <span class="chip"><i></i>AI動画クリエイターのための SNSマネタイズ代行</span>
+      <h1>再生数は、<br>もう取れている。<br><mark>次は、収益に。</mark></h1>
+      <p class="lead">AI動画アカウントのマネタイズを、CIELISが裏側でまるごと担当。あなたは今まで通り、発信を続けるだけ。</p>
+      <div class="cta">
+        <a class="btn js-dm" href="https://ig.me/m/inbesters" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M44 6L4 22l16 6 6 16z"/><path d="M44 6L20 28"/></svg>InstagramのDMで相談する</a>
+        <p class="cond"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="19"/><path d="M15 24l6 6 12-12"/></svg><span><b>平均再生数5,000回以上</b>の方、ぜひご相談ください</span></p>
+      </div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="phone">
+        <div class="screen"><span class="ai">AI VIDEO</span><svg aria-hidden="true" viewBox="0 0 48 48"><path d="M14 8l28 16-28 16z" fill="currentColor"/></svg></div>
+        <div class="views"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 24s8-14 21-14 21 14 21 14-8 14-21 14S3 24 3 24z"/><circle cx="24" cy="24" r="6"/></svg><span>平均再生数</span><em>5,000+</em></div>
+        <div class="lines"><i></i><i></i></div>
+      </div>
+      <svg class="dash" viewBox="0 0 100 60" fill="none"><path d="M2 55 C40 55 50 10 96 6" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 10"/></svg>
+      <div class="coin">¥</div>
+      <svg class="up" viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 62 30 34l20 14 40-40"/><path d="M66 8h24v24"/></svg>
+    </div>
+  </div>
+</section>
+
+<section class="on-yellow">
+  <div class="wrap">
+    <span class="eb">PROBLEM</span>
+    <h2>伸びているのに、<br><mark>収益になっていない。</mark></h2>
+    <ul class="checks">
+      <li class="box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="36" height="36" rx="8"/><path d="M15 24l6 6 12-12"/></svg>再生数は伸びるのに、収益はほとんど増えていない</li>
+      <li class="box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="36" height="36" rx="8"/><path d="M15 24l6 6 12-12"/></svg>何を売ればいいのか分からない</li>
+      <li class="box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="36" height="36" rx="8"/><path d="M15 24l6 6 12-12"/></svg>商品や教材を作る時間がない</li>
+      <li class="box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="36" height="36" rx="8"/><path d="M15 24l6 6 12-12"/></svg>営業・DM対応・顧客対応はやりたくない</li>
+      <li class="box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="36" height="36" rx="8"/><path d="M15 24l6 6 12-12"/></svg>本当は、動画づくりに集中したい</li>
+    </ul>
+    <p class="after">1つでも当てはまるなら、CIELISがお手伝いできます。</p>
+  </div>
+</section>
+
+<section class="insight">
+  <i class="blob b1"></i>
+  <div class="wrap">
+    <div>
+      <span class="eb">INSIGHT</span>
+      <h2>再生数は、<br>それだけで<br><mark>価値がある。</mark></h2>
+      <p class="body">平均5,000回再生されるアカウントは、投稿のたびに数千人の目に届くメディアです。足りないのは、その注目を収益に変える「仕組み」だけです。</p>
+    </div>
+    <div class="stat box">
+      <div class="n">5,000<small>回+</small></div>
+      <div class="u">1投稿あたりの平均再生数</div>
+      <span class="eq">＝ 収益化できる“注目”がある</span>
+    </div>
+  </div>
+</section>
+
+<section class="on-yellow">
+  <div class="wrap">
+    <span class="eb">SOLUTION</span>
+    <h2>あなたは<mark>発信に集中</mark>。<br>マネタイズは<mark>CIELIS</mark>へ。</h2>
+    <div class="split">
+      <div class="side box"><div class="ci"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4" width="22" height="40" rx="4"/><path d="M21 38h6"/><path d="M20 17l9 5-9 5z" fill="currentColor"/></svg></div><div><small>YOU ／ オーナー</small><b>これまで通り<br>SNSを運用</b><p>本来のコンテンツ制作に集中</p></div></div>
+      <div class="plus" aria-hidden="true">＋</div>
+      <div class="side box us"><div class="ci"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="6"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M10 10l5 5M33 33l5 5M10 38l5-5M33 15l5-5"/></svg></div><div><small>CIELIS</small><b>収益化の仕組みを<br>構築・運営</b><p>商品設計から営業・教育まで一気通貫</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="on-blue">
+  <div class="wrap">
+    <span class="eb">BUSINESS MODEL</span>
+    <h2>再生数が、<br><mark>継続収益</mark>に変わる仕組み</h2>
+    <div class="flow">
+      <div class="node box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="4" width="22" height="40" rx="4"/><path d="M21 38h6"/><path d="M20 17l9 5-9 5z" fill="currentColor"/></svg><span>SNS<br class="d">アカウント</span></div>
+      <svg class="down" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v32M10 26l14 14 14-14"/></svg>
+      <div class="node box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="16" r="6"/><path d="M6 38c0-7 5-11 12-11s12 4 12 11"/><circle cx="34" cy="18" r="5"/><path d="M32 27c6 0 10 4 10 10"/></svg><span>再生・<br class="d">フォロワー</span></div>
+      <svg class="down" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v32M10 26l14 14 14-14"/></svg>
+      <div class="core"><div class="h"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M27 4L10 27h12l-3 17 17-24H24z"/></svg>CIELIS</div><ul><li>商品設計</li><li>教材制作</li><li>販売導線</li><li>営業</li><li>教育・サポート</li></ul></div>
+      <svg class="down" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v32M10 26l14 14 14-14"/></svg>
+      <div class="node box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="19"/><path d="M16 14l8 11 8-11M24 25v12M17 26h14M17 32h14"/></svg>売上発生</div>
+      <svg class="down" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v32M10 26l14 14 14-14"/></svg>
+      <div class="node box gold"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M38 20a15 15 0 0 0-27-5M10 28a15 15 0 0 0 27 5"/><path d="M10 8v7h7M38 40v-7h-7"/></svg><span>オーナーへ<br class="d">継続還元</span></div>
+    </div>
+    <p class="note-bar">発信を続けるほど、収益の仕組みが育っていく</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eb">WHY AI VIDEO</span>
+    <h2>AI動画アカウントは、<br><mark>高単価サービス</mark>と<br>相性が良い。</h2>
+    <div class="fit">
+      <div class="node box"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="28" height="24" rx="4"/><path d="M32 21l12-7v20l-12-7z"/><path d="M13 19l9 5-9 5z" fill="currentColor"/></svg>AI動画アカウント</div>
+      <svg class="down" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6v32M10 26l14 14 14-14"/></svg>
+      <div class="node box blue"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l20-9 20 9-20 9z"/><path d="M12 22v10c4 4 20 4 24 0V22M44 18v10"/></svg>AI動画制作スクール・コンサル</div>
+    </div>
+    <ul class="reasons">
+      <li><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5l6 12 13 2-9 9 2 13-12-6-12 6 2-13-9-9 13-2z"/></svg>発信内容が、そのまま商品の信頼につながる</li>
+      <li><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4v10M24 34v10M4 24h10M34 24h10"/><path d="M24 16l3 5 5 3-5 3-3 5-3-5-5-3 5-3z" fill="currentColor"/></svg>学びたいニーズが伸びている分野</li>
+      <li><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42h36M10 34l9-10 7 6 14-16"/><path d="M32 14h8v8"/></svg>継続サポート型で収益が積み上がる</li>
+    </ul>
+  </div>
+</section>
+
+<section class="on-yellow">
+  <div class="wrap">
+    <span class="eb">WHAT WE DO</span>
+    <h2>商品設計から運営まで、<br><mark>一気通貫</mark>で担当。</h2>
+    <ul class="areas">
+      <li class="box"><i>01</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>マネタイズ戦略設計</li>
+      <li class="box"><i>02</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l18-9 18 9v18l-18 9-18-9z"/><path d="M6 15l18 9 18-9M24 24v18"/></svg>商品・サービス設計</li>
+      <li class="box"><i>03</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="38" r="4"/><circle cx="38" cy="10" r="4"/><path d="M14 38h14a6 6 0 0 0 0-12H20a6 6 0 0 1 0-12h14"/></svg>販売導線構築</li>
+      <li class="box"><i>04</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h14a4 4 0 0 1 4 4v28a3 3 0 0 0-3-3H6zM42 8H28a4 4 0 0 0-4 4v28a3 3 0 0 1 3-3h15z"/></svg>教材制作</li>
+      <li class="box"><i>05</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20v8h6l14 9V11L14 20z"/><path d="M34 18a8 8 0 0 1 0 12M38 13a14 14 0 0 1 0 22"/></svg>集客・営業</li>
+      <li class="box"><i>06</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h32v22H22l-9 7v-7H8z"/><path d="M16 20h16M16 25h10"/></svg>受注・顧客対応</li>
+      <li class="box"><i>07</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18l20-9 20 9-20 9z"/><path d="M12 22v10c4 4 20 4 24 0V22M44 18v10"/></svg>受講者への<br>教育・サポート</li>
+      <li class="box"><i>08</i><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42h36M10 34l9-10 7 6 14-16"/><path d="M32 14h8v8"/></svg>売上改善・運営</li>
+    </ul>
+    <p class="areas-note">オーナーは基本的に「これまで通りSNSを運用する」だけ</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eb">PLANS</span>
+    <h2>選べる<mark>2つの提携パターン</mark></h2>
+    <div class="plans">
+      <div class="plan box">
+        <div class="pn">PLAN A</div><div class="ps">発信はこれまで通り、自分で</div>
+        <div class="row"><span>SNS運用</span><em>オーナー</em></div>
+        <div class="row"><span>マネタイズ</span><em class="c">CIELIS</em></div>
+        <p>自分らしい発信を続けながら、収益化の仕組みだけを任せたい方に。</p>
+      </div>
+      <div class="plan box b">
+        <div class="pn">PLAN B</div><div class="ps">運用もマネタイズも、まるごと</div>
+        <div class="row"><span>SNS運用</span><em class="c">CIELIS</em></div>
+        <div class="row"><span>マネタイズ</span><em class="c">CIELIS</em></div>
+        <p>AI動画制作・企画・投稿制作・投稿・アカウント運用までCIELISが代行します。</p>
+      </div>
+    </div>
+    <p class="fine">※ いずれも、発生した収益の一部をオーナーへ継続的にお支払いします。条件は個別にご相談のうえ決定します。</p>
+  </div>
+</section>
+
+<section class="on-coral">
+  <div class="wrap">
+    <span class="eb">MERITS</span>
+    <h2>オーナーにとっての<br><mark>5つのメリット</mark></h2>
+    <ol class="merits">
+      <li class="box">既存アカウントをそのまま活用できる</li>
+      <li class="box">マネタイズ業務の負担を軽減できる</li>
+      <li class="box">本来の発信活動に集中できる</li>
+      <li class="box">収益が継続的に還元される</li>
+      <li class="box">希望すればSNS運用も任せられる</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eb">STEPS</span>
+    <h2>提携開始までの<mark>流れ</mark></h2>
+    <ol class="steps">
+      <li><div class="d"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M44 6L4 22l16 6 6 16z"/><path d="M44 6L20 28"/></svg></div><div><small>STEP 1</small><b>DMでご相談</b></div></li>
+      <li><div class="d"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="21" cy="21" r="13"/><path d="M31 31l11 11"/></svg></div><div><small>STEP 2</small><b>アカウント分析</b></div></li>
+      <li><div class="d"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40l4-12L32 8l8 8-20 20z"/><path d="M28 12l8 8"/></svg></div><div><small>STEP 3</small><b>マネタイズ設計</b></div></li>
+      <li><div class="d"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30h8l9 4h8a3 3 0 0 0 0-6h-7M14 30v-8h6l9 4"/><path d="M34 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/><path d="M29 10v4"/></svg></div><div><small>STEP 4</small><b>提携条件決定</b></div></li>
+      <li><div class="d"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4c9 6 12 16 8 28H16C12 20 15 10 24 4z"/><circle cx="24" cy="18" r="4"/><path d="M16 32l-6 6h10M32 32l6 6H28M20 38l4 6 4-6"/></svg></div><div><small>STEP 5</small><b>運用開始</b></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="on-yellow">
+  <div class="wrap">
+    <span class="eb">FAQ</span>
+    <h2>よくある質問</h2>
+    <div class="faq">
+      <details><summary>費用はかかりますか？</summary><p class="a">提携条件は、アカウントの状況やご希望をうかがったうえで、個別にご相談して決定します。</p></details>
+      <details><summary>収益はどのように受け取れますか？</summary><p class="a">発生した収益の一部を、オーナーへ継続的にお支払いします。条件は個別にご相談のうえ決定します。</p></details>
+      <details><summary>今の発信スタイルは変わりますか？</summary><p class="a">PLAN Aでは、これまで通りオーナーご自身が発信内容を決めて運用できます。</p></details>
+      <details><summary>投稿の制作も任せられますか？</summary><p class="a">はい。PLAN Bでは、AI動画制作・企画・投稿制作・投稿・アカウント運用までCIELISが代行します。</p></details>
+      <details><summary>平均再生数が5,000回に届いていなくても相談できますか？</summary><p class="a">平均再生数5,000回以上を目安にしています。まずは現在の状況をDMでお聞かせください。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final on-blue">
+  <i class="blob b2"></i>
+  <div class="wrap">
+    <span class="eb">LET'S TALK</span>
+    <h2>眠っている再生数を、<br><mark>新しい収益源</mark>へ。</h2>
+    <div class="target box">
+      <h3>こんな方は、ぜひDMください</h3>
+      <ul>
+        <li><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="19"/><path d="M15 24l6 6 12-12"/></svg>AI動画生成のアカウントを運用している</li>
+        <li class="k"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="19"/><path d="M15 24l6 6 12-12"/></svg>平均再生数が5,000回以上ある</li>
+        <li><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="19"/><path d="M15 24l6 6 12-12"/></svg>再生数を収益につなげたい</li>
+      </ul>
+    </div>
+    <div class="cta">
+      <a class="btn yellow js-dm" href="https://ig.me/m/inbesters" target="_blank" rel="noopener"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M44 6L4 22l16 6 6 16z"/><path d="M44 6L20 28"/></svg>InstagramのDMで相談する</a>
+      <p class="handle">Instagram <b>@inbesters</b></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><b>CIELIS</b><p>合同会社CIELIS ｜ SNSマネタイズ事業</p><p>© 2026 CIELIS LLC.</p></div>
+</footer>
+
+<div class="dock" id="dock" aria-hidden="true">
+  <a class="btn js-dm" href="https://ig.me/m/inbesters" target="_blank" rel="noopener" tabindex="-1"><svg aria-hidden="true" viewBox="0 0 48 48" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M44 6L4 22l16 6 6 16z"/><path d="M44 6L20 28"/></svg><span>DMで相談する<small>平均再生数5,000回以上の方へ</small></span></a>
+</div>
+
+<script>
+// Bottom DM bar: shown after the hero CTA scrolls away, hidden while the final CTA or footer is on screen
+(function(){
+  var dock=document.getElementById('dock'),hero=document.querySelector('.hero .cta'),ends=[document.querySelector('.final .cta'),document.querySelector('footer')];
+  if(!('IntersectionObserver' in window)||!dock||!hero)return;
+  var past=false,vis={};
+  function upd(){var end=Object.keys(vis).some(function(k){return vis[k]});var on=past&&!end;
+    dock.classList.toggle('show',on);dock.setAttribute('aria-hidden',on?'false':'true');dock.querySelector('a').tabIndex=on?0:-1;}
+  new IntersectionObserver(function(e){past=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;upd();}).observe(hero);
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){vis[x.target===ends[0]?'cta':'ft']=x.isIntersecting});upd();});
+  ends.forEach(function(el){if(el)io.observe(el)});
+})();
+</script>
+</body>
+</html>
