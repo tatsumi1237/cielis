@@ -1,0 +1,26 @@
+name: Deploy memo-db
+on:
+  push:
+    branches: [main, claude/natural-language-memo-db-1skt08]
+    paths: ["memo-db/**"]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: memo-db } }
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm i -g wrangler@4
+      - name: D1作成(既存なら何もしない)とID反映
+        run: |
+          wrangler d1 create cielis-memo-db || true
+          ID=$(wrangler d1 list --json | node -e 'const l=JSON.parse(require("fs").readFileSync(0));console.log(l.find(d=>d.name==="cielis-memo-db").uuid)')
+          sed -i "s/REPLACE_WITH_ID_FROM_wrangler_d1_create/$ID/" wrangler.toml
+      - run: wrangler d1 execute cielis-memo-db --remote --file=schema.sql
+      - run: wrangler deploy
+      - run: echo "${{ secrets.MEMO_AUTH_TOKEN }}" | wrangler secret put AUTH_TOKEN

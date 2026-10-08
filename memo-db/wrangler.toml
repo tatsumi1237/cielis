@@ -12,9 +12,9 @@ binding = "DB"
 database_name = "cielis-memo-db"
 database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
 
-# Anthropic APIキーが無い場合のフォールバック(無料枠あり・日本語はやや弱め)
+# Workers AI(無料枠)
 [ai]
 binding = "AI"
 
 [vars]
-ANTHROPIC_MODEL = "claude-haiku-5-5"
+AI_MODEL = "@cf/meta/llama-3.3-70b-instruct-fp8-fast"

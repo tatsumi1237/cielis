@@ -6,33 +6,13 @@ const json = (data, status = 200) =>
   new Response(JSON.stringify(data), { status, headers: { "content-type": "application/json; charset=utf-8" } });
 
 async function callLLM(env, system, user, maxTokens = 800) {
-  if (env.ANTHROPIC_API_KEY) {
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: {
-        "x-api-key": env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: env.ANTHROPIC_MODEL || "claude-haiku-5-5",
-        max_tokens: maxTokens,
-        system,
-        messages: [{ role: "user", content: user }],
-      }),
-    });
-    if (!r.ok) throw new Error(`Anthropic API ${r.status}: ${await r.text()}`);
-    const d = await r.json();
-    return d.content.map((c) => c.text || "").join("");
-  }
-  if (env.AI) {
-    const d = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
-      messages: [{ role: "system", content: system }, { role: "user", content: user }],
-      max_tokens: maxTokens,
-    });
-    return d.response;
-  }
-  throw new Error("LLMが未設定です(ANTHROPIC_API_KEY か AI binding)");
+  // Cloudflare Workers AI(無料枠: 1日10,000 neurons)
+  const d = await env.AI.run(env.AI_MODEL || "@cf/meta/llama-3.3-70b-instruct-fp8-fast", {
+    messages: [{ role: "system", content: system }, { role: "user", content: user }],
+    max_tokens: maxTokens,
+    temperature: 0.1,
+  });
+  return typeof d.response === "string" ? d.response : JSON.stringify(d.response);
 }
 
 function parseJSON(text) {
