@@ -1,0 +1,20 @@
+name = "cielis-memo-db"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "cielis-memo-db"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+
+# Anthropic APIキーが無い場合のフォールバック(無料枠あり・日本語はやや弱め)
+[ai]
+binding = "AI"
+
+[vars]
+ANTHROPIC_MODEL = "claude-haiku-5-5"
