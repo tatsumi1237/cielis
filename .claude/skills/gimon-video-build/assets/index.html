@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<style>
+html,body{margin:0;background:#000;overflow:hidden}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000;font-family:"Noto Sans JP","Yu Gothic UI",sans-serif;color:#fff}
+#c{position:absolute;left:0;top:0}
+.ov{position:absolute;left:0;width:1080px;text-align:center;pointer-events:none;opacity:0}
+/* 縁取り：細い黒の縁＋柔らかい影で、どんな背景でも読めるようにする */
+.ol{text-shadow:-3px -3px 0 rgba(0,0,0,.55),3px -3px 0 rgba(0,0,0,.55),-3px 3px 0 rgba(0,0,0,.55),3px 3px 0 rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.65),0 6px 16px rgba(0,0,0,.6)}
+/* 文字の大きさは、ユーザーが3案から選んだ「B 大きく」を標準にする */
+#sub{top:230px;font:700 88px/1.38 "Noto Sans JP",sans-serif;letter-spacing:.03em}
+#sub.center{top:500px;font-size:114px;font-weight:900;line-height:1.3}
+#sub.turn{top:560px;font-size:104px;font-weight:900;line-height:1.36}
+#grow{top:1400px}
+#grow .num{font-size:200px}
+#need{top:1330px}
+#need .num{font-size:170px;color:#ffd75e}
+#need .lb2{font-weight:800;font-size:64px;margin-top:6px}
+#need .lb2 b{color:#ff6b5b}
+#sub.final{top:640px;font-size:104px;font-weight:900;line-height:1.32}
+#doc{top:1440px}
+#doc .num{font-size:140px}
+#rent{top:1430px}
+#rent .num{font-size:200px;color:#ffd75e}
+#sub.map{top:290px;font-size:64px} /* 地図のカットは元の大きさ（文が長く、地図と重なるため） */
+#sub em{font-style:normal;color:#ffd75e}
+.hud .lb{font-weight:800;font-size:60px;letter-spacing:.14em;color:#ffffff}
+.hud .num{font-weight:900;font-size:150px;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:.005em}
+.hud .num small{font-size:72px;font-weight:800;margin-left:10px}
+#count{top:905px}
+#count .num{font-size:180px}
+#count .num small{font-size:84px}
+#land{top:1450px}
+#land .lb{font-size:48px}
+#land .num{font-size:136px}
+#x4{top:1660px;font-weight:900;font-size:84px;letter-spacing:.06em}
+#x4 b{font-size:150px;color:#ffd75e;margin-left:12px;display:inline-block}
+#count .num{display:table;margin:0 auto;white-space:nowrap;transform-origin:50% 50%}
+#sub .ln{white-space:nowrap}
+
+/* ===== 文字の大きさだけを変える3案（書体・色は最初のまま）：v6=やや大きく / v7=大きく / v8=最大 ===== */
+#stage.v6 #sub{top:230px;font-size:78px} #stage.v6 #sub.center{top:540px;font-size:100px}
+#stage.v6 #count{top:900px} #stage.v6 #count .lb{font-size:54px} #stage.v6 #count .num{font-size:160px} #stage.v6 #count .num small{font-size:76px}
+#stage.v7 #sub{top:230px;font-size:88px} #stage.v7 #sub.center{top:500px;font-size:114px}
+#stage.v7 #count{top:905px} #stage.v7 #count .lb{font-size:60px} #stage.v7 #count .num{font-size:180px} #stage.v7 #count .num small{font-size:84px}
+#stage.v8 #sub{top:230px;font-size:96px} #stage.v8 #sub.center{top:480px;font-size:120px;letter-spacing:0}
+#stage.v8 #count{top:925px} #stage.v8 #count .lb{font-size:66px} #stage.v8 #count .num{font-size:200px} #stage.v8 #count .num small{font-size:92px}
+
+/* ===== 文字デザインの5案（#stage に v1〜v5 を付けて切り替える。対象は1カット目のタイトル・人口と、字幕） ===== */
+/* 案1：ニュース帯（極太ゴシック＋半透明の黒い帯） */
+#stage.v1 #sub{top:230px;font:900 92px/1.32 "Noto Sans JP";letter-spacing:.02em;text-shadow:0 4px 14px rgba(0,0,0,.45);
+  background:linear-gradient(transparent,rgba(8,10,14,.62) 14%,rgba(8,10,14,.62) 86%,transparent);padding:34px 0}
+#stage.v1 #sub.center{top:470px;font-size:118px;line-height:1.26;padding:44px 0}
+#stage.v1 #sub em{color:#ffd43b}
+#stage.v1 #count{top:930px}
+#stage.v1 #count .lb{font:900 56px "Noto Sans JP";letter-spacing:.2em}
+#stage.v1 #count .num{font:900 190px/1.05 "Noto Sans JP";letter-spacing:-.01em}
+#stage.v1 #count .num small{font-size:92px}
+
+/* 案2：極太ポップ（Dela Gothic One＋黒の太縁） */
+#stage.v2 .ol{text-shadow:0 12px 0 rgba(0,0,0,.28)}
+#stage.v2 #sub{top:230px;font:400 90px/1.36 "Dela Gothic One";-webkit-text-stroke:14px #15171c;paint-order:stroke fill;letter-spacing:.01em}
+#stage.v2 #sub.center{top:470px;font-size:112px}
+#stage.v2 #sub em{color:#ffd400}
+#stage.v2 #count{top:930px}
+#stage.v2 #count .lb{font:400 54px "Dela Gothic One";-webkit-text-stroke:10px #15171c;paint-order:stroke fill;letter-spacing:.1em}
+#stage.v2 #count .num{font:400 180px/1.1 "Dela Gothic One";-webkit-text-stroke:18px #15171c;paint-order:stroke fill}
+#stage.v2 #count .num small{font-size:88px}
+
+/* 案3：シネマ明朝（しっぽり明朝＋広い字間＋柔らかい光） */
+#stage.v3 .ol{text-shadow:0 0 18px rgba(0,0,0,.75),0 0 46px rgba(0,0,0,.55),0 3px 6px rgba(0,0,0,.6)}
+#stage.v3 #sub{top:240px;font:800 86px/1.42 "Shippori Mincho B1";letter-spacing:.08em}
+#stage.v3 #sub.center{top:480px;font-size:112px;letter-spacing:.06em}
+#stage.v3 #sub em{color:#f5d47e}
+#stage.v3 #count{top:950px}
+#stage.v3 #count .lb{font:800 50px "Shippori Mincho B1";letter-spacing:.45em}
+#stage.v3 #count .num{font:800 186px/1.1 "Shippori Mincho B1";letter-spacing:.02em}
+#stage.v3 #count .num small{font-size:84px}
+
+/* 案4：丸ゴシック・ラベル（Zen Maru Gothic を白い角丸の札に乗せる） */
+#stage.v4 .ol{text-shadow:none}
+#stage.v4 #sub{top:240px;font:900 84px/1.62 "Zen Maru Gothic";color:#1b1d22}
+#stage.v4 #sub .ln{background:#fff;border-radius:30px;padding:4px 30px;-webkit-box-decoration-break:clone;box-decoration-break:clone;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+#stage.v4 #sub.center{top:470px;font-size:104px}
+#stage.v4 #sub em{color:#ff4f2e}
+#stage.v4 #count{top:950px}
+#stage.v4 #count .lb{display:inline-block;font:900 50px "Zen Maru Gothic";color:#1b1d22;background:#ffd43b;border-radius:40px;padding:6px 34px;letter-spacing:.1em}
+#stage.v4 #count .num{font:900 186px/1.15 "Zen Maru Gothic";-webkit-text-stroke:16px #1b1d22;paint-order:stroke fill;text-shadow:0 10px 0 rgba(0,0,0,.25)}
+#stage.v4 #count .num small{font-size:86px}
+
+/* 案5：グラデ×インパクト（極太の斜体＋金のグラデーション＋黒縁） */
+#stage.v5 .ol{text-shadow:none;filter:drop-shadow(4px 4px 0 #111) drop-shadow(-4px -4px 0 #111) drop-shadow(4px -4px 0 #111) drop-shadow(-4px 4px 0 #111) drop-shadow(0 14px 16px rgba(0,0,0,.5))}
+#stage.v5 #sub{top:230px;font:900 92px/1.32 "Noto Sans JP";letter-spacing:.01em;font-style:italic}
+#stage.v5 #sub .ln{background:linear-gradient(180deg,#ffffff 35%,#fff0b8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+#stage.v5 #sub em{background:linear-gradient(180deg,#ffe066 10%,#ff8a1f 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+#stage.v5 #sub.center{top:480px;font-size:108px;line-height:1.26}
+#stage.v5 #count{top:940px}
+#stage.v5 #count .lb{font:900 54px "Noto Sans JP";letter-spacing:.18em;font-style:italic}
+#stage.v5 #count .num{font:900 196px/1.08 "Noto Sans JP";font-style:italic;background:linear-gradient(180deg,#fff6c2 10%,#ffc83d 55%,#ff8a1f 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+#stage.v5 #count .num small{font-size:92px}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Shippori+Mincho+B1:wght@800&family=Zen+Maru+Gothic:wght@900&display=block">
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div id="stage">
+  <canvas id="c" width="1080" height="1920"></canvas>
+  <div id="sub" class="ov ol"></div>
+  <div id="count" class="ov hud ol"><div class="lb">世界の人口</div><div class="num"><span id="cnum">8,000,000,000</span><small>人</small></div></div>
+  <div id="land" class="ov hud ol"><div class="lb">ひとり当たりの土地</div><div class="num">約150<small>万km²</small></div></div>
+  <div id="x4" class="ov ol">日本<b id="xn">×1</b></div>
+  <div id="grow" class="ov hud ol"><div class="num"><span id="gnum">1</span><small>人</small></div></div>
+  <div id="need" class="ov hud ol"><div class="lb">必要なのは</div><div class="num">数百人</div><div class="lb2">いまは <b>100人</b></div></div>
+  <div id="doc" class="ov hud ol"><div class="lb">医師は</div><div class="num">1000人に<span style="color:#7fd8ff">2人</span></div></div>
+  <div id="rent" class="ov hud ol"><div class="lb">家賃</div><div class="num">0<small>円</small></div></div>
+</div>
+<script>{ const v = new URLSearchParams(location.search).get('v'); if (v) document.getElementById('stage').classList.add('v' + v); }</script>
+<script type="module" src="scene.js"></script>
+</body></html>

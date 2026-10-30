@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUTO VIXS 絵コンテ</title>
+<style>
+  :root { --bg:#f4f5f7; --ink:#18212b; --sub:#5b6673; --line:#d8dce2; --acc:#0f8a6a; --navy:#1b2a4a;
+          --card:#fff; --track:#eef1f5; --cutA:#dce7f5; --cutB:#d8efe5; --naBg:#1b2a4a; --lineBg:#f1f6fb;
+          --th:#eceff3; --noteBg:#fff8e1; --noteLine:#ecd9a0; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#12161c; --ink:#e7ebf0; --sub:#9aa5b1; --line:#2c3440; --acc:#3cc7a0;
+      --navy:#9cb8e6; --card:#1a2029; --track:#222a35; --cutA:#2a3b55; --cutB:#24443a; --naBg:#3a5384;
+      --lineBg:#1f2a3a; --th:#222a35; --noteBg:#2e2a1a; --noteLine:#5c5130; }
+  }
+  :root[data-theme="dark"] { --bg:#12161c; --ink:#e7ebf0; --sub:#9aa5b1; --line:#2c3440; --acc:#3cc7a0;
+      --navy:#9cb8e6; --card:#1a2029; --track:#222a35; --cutA:#2a3b55; --cutB:#24443a; --naBg:#3a5384;
+      --lineBg:#1f2a3a; --th:#222a35; --noteBg:#2e2a1a; --noteLine:#5c5130; }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:28px 16px 64px; background:var(--bg); color:var(--ink);
+         font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",system-ui,sans-serif; line-height:1.65; }
+  main { max-width:1240px; margin:0 auto; }
+  h1 { font-size:24px; margin:0 0 4px; letter-spacing:.03em; line-height:1.4; }
+  h2 { font-size:18px; margin:34px 0 12px; padding-left:10px; border-left:4px solid var(--acc); }
+  .lead { color:var(--sub); margin:0; font-size:14px; }
+  .spec { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; }
+  .spec div { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px; font-size:14px; }
+  .spec b { display:block; font-size:12px; color:var(--sub); }
+  .tl { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px; overflow-x:auto; }
+  .row { display:flex; min-width:720px; margin-bottom:6px; }
+  .row .lab { width:86px; flex:none; font-size:11px; color:var(--sub); font-weight:700; display:flex; align-items:center; }
+  .track { position:relative; flex:1; height:34px; background:var(--track); border-radius:4px; }
+  .seg { position:absolute; top:0; bottom:0; display:flex; align-items:center; justify-content:center; font-size:11px;
+         border-radius:4px; overflow:hidden; white-space:nowrap; padding:0 2px; }
+  .cut.a { background:var(--cutA); } .cut.b { background:var(--cutB); }
+  .na { background:var(--naBg); color:#fff; } .txt { background:var(--acc); color:#fff; }
+  .scale { position:relative; min-width:720px; height:16px; margin-left:86px; font-size:10px; color:var(--sub); }
+  .scale span { position:absolute; transform:translateX(-50%); }
+  .seam { position:absolute; top:-4px; bottom:-4px; width:2px; background:#e04848; left:50%; }
+  .hint { font-size:12px; color:var(--sub); margin:6px 0 0; }
+  .part { font-size:13px; font-weight:700; color:var(--navy); margin:18px 0 8px; }
+  .shots { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .shot { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; }
+  .frame { position:relative; }
+  .frame img { width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:6px; display:block; }
+  .overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; padding-top:18%;
+             color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.55); text-align:center; }
+  .overlay .logo { font-size:22px; font-weight:800; letter-spacing:.14em; }
+  .overlay .copy { font-size:16px; font-weight:700; margin-top:10px; line-height:1.5; }
+  .tag { display:flex; justify-content:space-between; margin:10px 0 2px; }
+  .tag strong { font-size:15px; } .tag span { color:var(--acc); font-weight:700; font-size:13px; }
+  .line { background:var(--lineBg); border-left:3px solid var(--navy); padding:6px 10px; margin:8px 0 0; font-size:14px; font-weight:700; }
+  .line small { display:block; font-weight:400; color:var(--sub); font-size:11px; }
+  dl { margin:0; font-size:13px; } dt { color:var(--sub); font-size:11px; font-weight:700; margin-top:8px; } dd { margin:0; }
+  .tablewrap { overflow-x:auto; }
+  table { width:100%; min-width:560px; border-collapse:collapse; background:var(--card); font-size:13px; border:1px solid var(--line); }
+  th,td { padding:9px 12px; text-align:left; vertical-align:top; border-bottom:1px solid var(--line); }
+  th { background:var(--th); color:var(--sub); font-size:12px; }
+  ul { font-size:14px; padding-left:20px; }
+  .note { background:var(--noteBg); border:1px solid var(--noteLine); border-radius:8px; padding:12px 16px; font-size:14px; }
+  @media (max-width:960px){ .shots{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:420px){ .shots{gap:10px} .shot{padding:8px} .line{font-size:13px} }
+</style>
+</head>
+<body>
+<main>
+  <h1>AUTO VIXS(オートビックス)<br>求人・企業紹介動画 絵コンテ</h1>
+  <p class="lead">ポートフォリオ用の架空企業 / 9:16 / 20秒 / 8カット / 480p<br>映像・効果音・BGM:Seedance 2.0 / ナレーション:別収録(15.98秒)</p>
+
+  <h2>基本情報</h2>
+  <div class="spec">
+    <div><b>会社名(架空)</b>AUTO VIXS(オートビックス)/ 大手カー整備チェーン</div>
+    <div><b>目的</b>求人募集と企業紹介</div>
+    <div><b>メッセージ</b>車を直すのではなく、人と家族と未来を守る仕事</div>
+    <div><b>構成</b>冒頭 0.5秒 + ナレーション 16秒 + 文字を見せる 3.5秒 = 20秒</div>
+    <div><b>ユニフォーム</b>濃紺のつなぎに、エメラルドグリーンのライン、胸に緑の丸い紋章</div>
+    <div><b>主人公</b>20代後半の男性整備士(全カットで同じ人物)</div>
+  </div>
+
+  <h2>タイムライン(20秒)</h2>
+  <div class="tl">
+    <div class="row"><div class="lab">カット</div><div class="track">
+      <div class="seg cut a" style="left:0%;width:12%">①</div>
+      <div class="seg cut a" style="left:12%;width:12.5%">②</div>
+      <div class="seg cut a" style="left:24.5%;width:6.5%">③</div>
+      <div class="seg cut a" style="left:31%;width:6%">④</div>
+      <div class="seg cut a" style="left:37%;width:13%">⑤ 鍵</div>
+      <div class="seg cut b" style="left:50%;width:8.5%">⑥</div>
+      <div class="seg cut b" style="left:58.5%;width:17.5%">⑦ 見送り</div>
+      <div class="seg cut b" style="left:76%;width:24%">⑧ 集合・ロゴ</div>
+      <div class="seam" title="生成の繋ぎ目(10秒)"></div>
+    </div></div>
+    <div class="row"><div class="lab">ナレーション</div><div class="track">
+      <div class="seg na" style="left:4%;width:6.65%">我々が…</div>
+      <div class="seg na" style="left:13.35%;width:9.15%">車を直す…</div>
+      <div class="seg na" style="left:26.3%;width:9.5%">車の安全を…</div>
+      <div class="seg na" style="left:37.6%;width:1.3%"></div>
+      <div class="seg na" style="left:43.2%;width:2.55%"></div>
+      <div class="seg na" style="left:49.05%;width:6%">未来を…</div>
+      <div class="seg na" style="left:59.2%;width:3.3%"></div>
+      <div class="seg na" style="left:65.05%;width:8.35%">人々の…</div>
+      <div class="seg na" style="left:77.45%;width:4.95%">オート…</div>
+    </div></div>
+    <div class="row"><div class="lab">文字</div><div class="track">
+      <div class="seg txt" style="left:82.5%;width:17.5%">募集の文字</div>
+    </div></div>
+    <div class="scale"><span style="left:0">0</span><span style="left:25%">5</span><span style="left:50%">10</span><span style="left:75%">15</span><span style="left:100%">20秒</span></div>
+  </div>
+  <p class="hint">赤い線は生成の繋ぎ目(10秒)。⑤→⑥の場面転換に合わせているので、繋ぎ目は目立ちません。スマホでは横にスクロールできます。</p>
+
+  <h2>カット割り</h2>
+  <div class="part">前半(生成1本目・10秒)— 仕事の姿</div>
+  <div class="shots">
+    <div class="shot"><div class="frame"><img src="frame1.jpg" alt="カット1 手元"></div>
+      <div class="tag"><strong>① 手元</strong><span>0–2.4秒</span></div>
+      <p class="line">我々がしているのは<small>0.80–2.13秒</small></p>
+      <dl><dt>映像</dt><dd>手袋をした手が、トルクレンチでホイールナットを締める</dd>
+      <dt>カメラ</dt><dd>手元のクローズアップ。ゆっくり寄る</dd>
+      <dt>音</dt><dd>レンチの「カチッ」。低いピアノで BGM が始まる</dd></dl></div>
+    <div class="shot"><div class="frame"><img src="frame2.jpg" alt="カット2 主人公"></div>
+      <div class="tag"><strong>② 主人公</strong><span>2.4–4.9秒</span></div>
+      <p class="line">車を直す仕事ではない<small>2.67–4.50秒</small></p>
+      <dl><dt>映像</dt><dd>リフトで上げた車の下で、主人公が真剣な目で車体を見上げる</dd>
+      <dt>カメラ</dt><dd>顔のアップ。下から少しあおる</dd>
+      <dt>音</dt><dd>工場の環境音(リフトのうなり)</dd></dl></div>
+    <div class="shot"><div class="frame"><img src="frame7.jpg" alt="カット3 工場全景"></div>
+      <div class="tag"><strong>③ 工場全景</strong><span>4.9–6.2秒</span></div>
+      <p class="line">車の安全を…<small>5.26秒〜</small></p>
+      <dl><dt>映像</dt><dd>広く清潔な整備工場を、天井近くから見下ろす。何台もの車がリフトに並び、仲間が連携して作業する(人物は小さく、顔は映さない)</dd>
+      <dt>カメラ</dt><dd>ハイアングルの俯瞰。ゆっくり前へ進む</dd>
+      <dt>音</dt><dd>BGM にストリングスが加わる</dd></dl></div>
+    <div class="shot"><div class="frame"><img src="frame3.jpg" alt="カット4 点検"></div>
+      <div class="tag"><strong>④ 点検</strong><span>6.2–7.4秒</span></div>
+      <p class="line">…守ることは<small>〜7.16秒</small></p>
+      <dl><dt>映像</dt><dd>顔は映さず、手元だけ。ライトの光がブレーキディスクの表面をなめるように照らす</dd>
+      <dt>カメラ</dt><dd>手元の超アップ。光の動きに合わせて、わずかに横へ動く</dd>
+      <dt>音</dt><dd>ライトのスイッチ音</dd></dl></div>
+    <div class="shot"><div class="frame"><img src="frame4.jpg" alt="カット5 鍵の引き渡し"></div>
+      <div class="tag"><strong>⑤ 鍵の引き渡し</strong><span>7.4–10.0秒</span></div>
+      <p class="line">人、 家族、<small>人 7.52–7.78秒 / 家族 8.64–9.15秒</small></p>
+      <dl><dt>映像</dt><dd>工場の出口で、主人公が家族に鍵を渡す。女の子が笑顔で受け取る</dd>
+      <dt>カメラ</dt><dd>3 人と主人公を収める。固定</dd>
+      <dt>音</dt><dd>鍵の「チャリン」。BGM があたたかい和音に変わる</dd></dl></div>
+  </div>
+
+  <div class="part">後半(生成2本目・10秒)— 守られる人たち</div>
+  <div class="shots">
+    <div class="shot"><div class="frame"><img src="frame8.jpg" alt="カット6 シートベルト"></div>
+      <div class="tag"><strong>⑥ シートベルト</strong><span>10.0–11.7秒</span></div>
+      <p class="line">未来を守ること<small>9.81–11.01秒(⑤の終わりから)</small></p>
+      <dl><dt>映像</dt><dd>父親が娘のチャイルドシートのベルトを締め、2 人で笑い合う</dd>
+      <dt>カメラ</dt><dd>車内から。やわらかい逆光</dd>
+      <dt>音</dt><dd>ベルトの「カチッ」(①のレンチの音と対にする)</dd></dl></div>
+    <div class="shot"><div class="frame"><img src="frame5.jpg" alt="カット7 ドローン空撮の見送り"></div>
+      <div class="tag"><strong>⑦ 見送り(空撮)</strong><span>11.7–15.2秒</span></div>
+      <p class="line">我々は、人々の未来を守っている<small>11.84–14.68秒</small></p>
+      <dl><dt>映像</dt><dd>夕日の中、家族の白い車が AUTO VIXS の店舗から道路へ走り出す。整備ピットの前で、整備士たちが手を振って見送る</dd>
+      <dt>店舗デザイン</dt><dd>屋上の大型ロゴ看板と道路沿いのポール看板、タイヤ売り場が見えるガラス張りの店舗、番号付きの整備ピット 6 つ、のぼりと広い駐車場。紺・白・緑の配色</dd>
+      <dt>カメラ</dt><dd>ドローンの空撮。高い位置から車を追いながら、大きく旋回して上昇する</dd>
+      <dt>音</dt><dd>静かなエンジン音。BGM が最も盛り上がる</dd></dl></div>
+    <div class="shot"><div class="frame"><img src="frame6.jpg" alt="カット8 集合とロゴ">
+        <div class="overlay"><div class="logo">AUTO VIXS</div><div class="copy">未来を守る仲間を<br>募集しています</div></div></div>
+      <div class="tag"><strong>⑧ 集合・ロゴ</strong><span>15.2–20.0秒</span></div>
+      <p class="line">オートビックス<small>15.49–16.48秒</small></p>
+      <dl><dt>映像</dt><dd>夕暮れの店舗の前に、整備士の仲間が並ぶ。中央に主人公</dd>
+      <dt>カメラ</dt><dd>正面。ゆっくり寄る</dd>
+      <dt>音</dt><dd>BGM が余韻を残して終わる</dd>
+      <dt>文字(ナレーションなし)</dt><dd>16.5–20秒:AUTO VIXS / 未来を守る仲間を(改行)募集しています</dd></dl></div>
+  </div>
+
+  <h2>ナレーションと音の流れ(実測)</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>時間</th><th>ナレーション</th><th>カット</th><th>効果音・BGM</th></tr></thead>
+    <tbody>
+      <tr><td>0.80–2.13秒</td><td>我々がしているのは</td><td>① 手元</td><td>レンチの音 / ピアノが始まる</td></tr>
+      <tr><td>2.67–4.50秒</td><td>車を直す仕事ではない</td><td>② 主人公</td><td>リフトのうなり</td></tr>
+      <tr><td>5.26–7.16秒</td><td>車の安全を守ることは</td><td>③ 工場 → ④ 点検</td><td>ストリングス / ライトの音</td></tr>
+      <tr><td>7.52–9.15秒</td><td>人、 家族、</td><td>⑤ 鍵の引き渡し</td><td>鍵の音 / あたたかい和音</td></tr>
+      <tr><td>9.81–11.01秒</td><td>未来を守ること</td><td>⑤ → ⑥ ベルト</td><td>ベルトの音</td></tr>
+      <tr><td>11.84–14.68秒</td><td>我々は、人々の未来を守っている</td><td>⑦ 見送り(空撮)</td><td>エンジン音 / BGM が最も盛り上がる</td></tr>
+      <tr><td>15.49–16.48秒</td><td>オートビックス</td><td>⑧ 集合・ロゴ</td><td>—</td></tr>
+      <tr><td>16.5–20秒</td><td>(文字のみ)</td><td>⑧ 集合・ロゴ</td><td>BGM の余韻で終わる</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>制作メモ</h2>
+  <ul>
+    <li><b>2 本に分けて生成:</b>Seedance 2.0 は 1 回の生成が最大 15 秒のため、10 秒 × 2 本で作って繋ぐ。繋ぎ目は⑤→⑥の場面転換。</li>
+    <li><b>音声:</b>Seedance には効果音と BGM だけを作らせ、声は入れない。別収録のナレーションを 0.5 秒の位置から重ねる。</li>
+    <li><b>文字:</b>⑧の文字は、生成後に重ねる。</li>
+  </ul>
+  <div class="note">ポートフォリオ用の架空の企業です。実在の企業とは関係ありません。社名が実在の企業と似ているため、公開する場合は社名の変更も検討してください。</div>
+</main>
+</body>
+</html>
